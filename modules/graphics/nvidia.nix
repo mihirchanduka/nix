@@ -15,9 +15,7 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = true;
-    modesetting.enable = true;
     powerManagement.enable = true;
-    nvidiaSettings = true;
   };
 
   boot.kernelParams = [ "plymouth.use-simpledrm" ];

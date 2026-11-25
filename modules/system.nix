@@ -58,10 +58,8 @@
   programs.nix-ld.enable = true;
 
   networking.networkmanager.enable = true;
-  networking.firewall.enable = true;
 
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";

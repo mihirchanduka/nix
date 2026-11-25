@@ -23,17 +23,12 @@
     khelpcenter
   ];
 
-  environment.systemPackages =
-    (with pkgs.kdePackages; [
-      konsole
-      ark
-      gwenview
-      filelight
-    ])
-    ++ (with pkgs; [
-      _7zz
-      ktailctl
-    ]);
+  environment.systemPackages = with pkgs; [
+    kdePackages.filelight
+    _7zz
+    ktailctl
+    kde-material-you-colors
+  ];
 
   programs.kdeconnect.enable = true;
 

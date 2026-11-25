@@ -8,5 +8,6 @@
     ./gaming.nix
     ./flatpak.nix
     ./tailscale.nix
+    ./nextdns.nix
   ];
 }

@@ -17,10 +17,26 @@
 
   boot.kernelModules = [ "ntsync" ];
 
-  programs.gpu-screen-recorder.enable = true;
+  programs.gpu-screen-recorder = {
+    ui.enable = true;
+  };
+
+  home-manager.users.${username}.xdg.autostart = {
+    enable = true;
+    entries = [
+      "${
+        pkgs.makeDesktopItem {
+          name = "gpu-screen-recorder-ui";
+          desktopName = "GPU Screen Recorder";
+          icon = "gpu-screen-recorder";
+          exec = "gsr-ui launch-daemon";
+          noDisplay = true;
+        }
+      }/share/applications/gpu-screen-recorder-ui.desktop"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
-    gpu-screen-recorder-gtk
     heroic
     (lutris.override {
       buildFHSEnv =
@@ -56,6 +72,8 @@
     winetricks
     wineWow64Packages.stable
     umu-launcher
-    deadlock-mod-manager
+    (deadlock-mod-manager.overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ aws-lc ];
+    }))
   ];
 }

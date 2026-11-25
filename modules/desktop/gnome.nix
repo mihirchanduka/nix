@@ -6,7 +6,6 @@
 
   services.xserver.xkb.layout = "us";
   console.useXkbConfig = true;
-  programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
     gnome-tweaks

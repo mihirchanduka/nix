@@ -19,6 +19,13 @@
     enable = true;
     setAsDefaultBrowser = true;
 
+    # System DNS already goes through NextDNS (modules/nextdns.nix);
+    # keep Firefox on it instead of its own DoH provider.
+    policies.DNSOverHTTPS = {
+      Enabled = false;
+      Locked = true;
+    };
+
     policies.ExtensionSettings = {
       "uBlock0@raymondhill.net" = {
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
@@ -43,6 +50,8 @@
     psst
     zed-editor
     lmstudio
+    lmstudio-bionic
+    unsloth-desktop
     claude-code
     pi-coding-agent
   ];

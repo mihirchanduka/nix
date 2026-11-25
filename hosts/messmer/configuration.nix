@@ -1,4 +1,9 @@
-{ hostname, pkgs, ... }:
+{
+  hostname,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -42,27 +47,27 @@
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
 
-  fileSystems."/".options = [
-    "compress=zstd"
-    "noatime"
-  ];
-  fileSystems."/home".options = [
-    "compress=zstd"
-    "noatime"
-  ];
-  fileSystems."/nix".options = [
-    "compress=zstd"
-    "noatime"
-  ];
-
-  fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/66a940aa-504e-48f3-9726-75383b05b62d";
-    fsType = "btrfs";
-    options = [
-      "nofail"
-      "noatime"
-    ];
-  };
+  fileSystems =
+    lib.genAttrs [ "/" "/home" "/nix" ] (_: {
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
+    })
+    // {
+      # "2TB HDD" (btrfs). Mounted here rather than udisks' /run/media so Chromium-based
+      # browsers let websites save into it (Chromium blocks everything under /run).
+      "/mnt/hdd" = {
+        device = "/dev/disk/by-uuid/7cb1d554-8eae-43e8-a85e-e0486feea4e6";
+        fsType = "btrfs";
+        options = [
+          "compress=zstd"
+          "noatime"
+          "nofail" # don't block boot if the drive is missing
+          "x-systemd.automount" # mount on first access
+        ];
+      };
+    };
 
   zramSwap.memoryPercent = 100;
   swapDevices = [
