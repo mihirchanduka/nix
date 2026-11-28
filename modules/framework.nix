@@ -21,12 +21,12 @@
 
   home-manager.users.${username}.home.file = {
     ".local/share/easyeffects/output/kieran_levin.json".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/ceiphr/ee-framework-presets/main/kieran_levin.json";
-      hash = "sha256-a1JJ4L3DsR7bVzF6/QR5Dza9VzklT8cWWjUJlMbStz8=";
+      url = "https://raw.githubusercontent.com/ceiphr/ee-framework-presets/27885fe00c97da7c441358c7ece7846722fd12fa/kieran_levin.json";
+      hash = "sha256-a1JJ4L3Dse21cxev0EeQ83rVc5JU/HFlo1CZTGTSt/M=";
     };
     ".local/share/easyeffects/output/lappy_mctopface.json".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/ceiphr/ee-framework-presets/main/lappy_mctopface.json";
-      hash = "sha256-Z9jEIeQTkWAK0e9WZeI75umZeRE3WuaWWfDvAbvFjf4=";
+      url = "https://raw.githubusercontent.com/ceiphr/ee-framework-presets/27885fe00c97da7c441358c7ece7846722fd12fa/lappy_mctopface.json";
+      hash = "sha256-Z9jEIeQTkWAK0e9WZeI75umZeRE3WuaVnw6vAby1jf4=";
     };
   };
 }
