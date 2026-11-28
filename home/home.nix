@@ -50,9 +50,8 @@
     psst
     zed-editor
     lmstudio
-    lmstudio-bionic
-    unsloth-desktop
     claude-code
+    antigravity-cli
     pi-coding-agent
   ];
 
